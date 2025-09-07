@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jei Professional</title>
+    <link rel="shortcut icon" href="whiteicon.png">
+    <meta name="description" content="A sua loja online de produtos profissionais para salão de beleza. Encontre as melhores marcas de shampoos, condicionadores, tratamentos e muito mais.">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- Ícones (Lucide Icons) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header class="bg-header shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <img src="logoicon.png" alt="logo-pg" style="width: 80px; margin: 0;">
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#produtos" class="nav-link">Produtos</a>
+                <a href="#sobre" class="nav-link">Sobre Nós</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <button id="theme-toggle" aria-label="Mudar tema" class="nav-link">
+                    <i data-lucide="sun" class="w-5 h-5" id="theme-toggle-sun"></i>
+                    <i data-lucide="moon" class="w-5 h-5 hidden" id="theme-toggle-moon"></i>
+                </button>
+                <a href="#" id="search-icon" aria-label="Buscar" class="nav-link"><i data-lucide="search" class="w-5 h-5"></i></a>
+                <a href="#" id="cart-icon" aria-label="Carrinho" class="nav-link cart-icon-container">
+                    <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                    <span id="cart-badge" class="cart-badge">0</span>
+                </a>
+                <button id="mobile-menu-button" class="md:hidden nav-link"><i data-lucide="menu" class="w-6 h-6"></i></button>
+            </div>
+        </nav>
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-header border-t border-gray-200">
+            <a href="#produtos" class="mobile-nav-link">Produtos</a>
+            <a href="#sobre" class="mobile-nav-link">Sobre Nós</a>
+            <a href="#contato" class="mobile-nav-link">Contato</a>
+        </div>
+    </header>
+    
+    <!-- Modal de Pesquisa -->
+    <div id="search-modal" class="modal-overlay hidden">
+        <div class="modal-content max-w-3xl h-auto max-h-[85vh] flex flex-col">
+            <div class="flex justify-between items-center mb-4 flex-shrink-0">
+                <h2 class="section-title text-2xl">Buscar Produtos</h2>
+                 <button id="close-search-btn" class="text-gray-500 hover:text-gray-800">
+                    <i data-lucide="x" class="w-8 h-8"></i>
+                </button>
+            </div>
+            <input type="text" id="search-input" placeholder="Digite o nome do produto..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4 flex-shrink-0">
+            <div id="search-results-list" class="overflow-y-auto flex-grow">
+                <p class="text-center text-gray-500">Digite algo para começar a buscar.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <main>
+        <!-- Seção Hero com Slideshow -->
+        <section id="hero-slideshow" class="relative h-[60vh] bg-gray-200">
+            <!-- Swiper -->
+            <div class="swiper-container h-full">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 (Slogan) -->
+                    <div class="swiper-slide hero-bg flex items-center justify-center">
+                        <div class="text-center p-6 fade-in">
+                            <h1 class="text-4xl md:text-6xl font-bold leading-tight text-hero">Beleza que Inspira,<br>Qualidade que Transforma.</h1>
+                            <p class="mt-4 text-lg md:text-xl text-hero-secondary">Os melhores produtos para o seu salão estão aqui.</p>
+                            <a href="#produtos" class="btn btn-hero mt-8 inline-block">Ver Novidades</a>
+                        </div>
+                    </div>
+                    <!-- Slide 2 (Exemplo) -->
+                    <div class="swiper-slide hero-bg-2 flex items-center justify-center">
+                         <div class="text-center p-6 fade-in text-white">
+                            <h1 class="text-4xl md:text-6xl font-bold leading-tight">Lançamento Exclusivo</h1>
+                            <p class="mt-4 text-lg md:text-xl">Conheça nossa nova linha de hidratação profunda.</p>
+                            <a href="#produtos" class="btn btn-hero mt-8 inline-block">Descubra Agora</a>
+                        </div>
+                    </div>
+                    <!-- Slide 3 (Exemplo) -->
+                    <div class="swiper-slide hero-bg-3 flex items-center justify-center">
+                         <div class="text-center p-6 fade-in text-white">
+                            <h1 class="text-4xl md:text-6xl font-bold leading-tight">Resultados de Salão</h1>
+                            <p class="mt-4 text-lg md:text-xl">Tecnologia profissional ao seu alcance.</p>
+                            <a href="#produtos" class="btn btn-hero mt-8 inline-block">Saiba Mais</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+
+                <!-- Add Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+
+        <!-- Seção de Produtos em Destaque -->
+        <section id="produtos" class="py-16 lg:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in">
+                    <h2 class="section-title">Nossos Destaques</h2>
+                    <p class="section-subtitle mt-2">Uma seleção especial dos produtos mais amados.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Produto 1 -->
+                    <div class="card-product group fade-in" data-name="Liss Premium" data-description="Alinhamento capilar de alta performance que reduz o volume, elimina o frizz e proporciona um liso duradouro com brilho intenso. Ideal para todos os tipos de cabelo.">
+                        <div class="relative">
+                            <img src="files/Liss_Premium.png" alt="Liss Premium" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Liss Premium</h3>
+                            <button class="btn btn-product add-to-cart-btn mb-3">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span>Adicionar</span>
+                            </button>
+                             <button class="view-details-btn">Ver detalhes</button>
+                        </div>
+                    </div>
+                    <!-- Produto 2 -->
+                    <div class="card-product group fade-in" data-name="Blind Premium" data-description="Cria uma barreira protetora nos fios, selando as cutículas e prolongando o efeito liso. Proteção máxima contra danos externos e um brilho espelhado incomparável.">
+                        <div class="relative">
+                           <img src="files/Blind_Premium.png" alt="Blind Premium" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Blind Premium</h3>
+                            <button class="btn btn-product add-to-cart-btn mb-3">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span>Adicionar</span>
+                            </button>
+                            <button class="view-details-btn">Ver detalhes</button>
+                        </div>
+                    </div>
+                    <!-- Produto 3 -->
+                    <div class="card-product group fade-in" data-name="Biotin Premium" data-description="Tratamento enriquecido com biotina e outros nutrientes essenciais para fortalecer os fios da raiz às pontas, estimular o crescimento e prevenir a queda.">
+                        <div class="relative">
+                            <img src="files/Biotin_Premium.png" alt="Biotin Premium" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Biotin Premium</h3>
+                            <button class="btn btn-product add-to-cart-btn mb-3">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span>Adicionar</span>
+                            </button>
+                            <button class="view-details-btn">Ver detalhes</button>
+                        </div>
+                    </div>
+                    <!-- Produto 4 -->
+                    <div class="card-product group fade-in" data-name="SOS Premium" data-description="Recuperação imediata para cabelos danificados. Reconstrói a fibra capilar, devolvendo a elasticidade, força e vitalidade aos fios.">
+                        <div class="relative">
+                           <img src="files/SOS_Premium.png" alt="SOS Premium" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">SOS Premium</h3>
+                            <button class="btn btn-product add-to-cart-btn mb-3">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span>Adicionar</span>
+                            </button>
+                            <button class="view-details-btn">Ver detalhes</button>
+                        </div>
+                    </div>
+                    <!-- Produto 5 (Escondido) -->
+                    <div class="card-product group fade-in hidden-product hidden" data-name="Acidificante" data-description="Equilibra o pH dos fios, sela as cutículas e potencializa tratamentos. Ideal para cabelos porosos e quimicamente tratados, devolvendo o brilho e a maciez.">
+                        <div class="relative">
+                           <img src="files/Acidificante.png" alt="Acidificante" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Acidificante</h3>
+                            <button class="btn btn-product add-to-cart-btn mb-3">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span>Adicionar</span>
+                            </button>
+                            <button class="view-details-btn">Ver detalhes</button>
+                        </div>
+                    </div>
+                    <!-- Produto 6 (Escondido) -->
+                    <div class="card-product group fade-in hidden-product hidden" data-name="Magic Cream" data-description="Creme multifuncional que hidrata, nutre e repara em minutos. Deixa os cabelos macios, sedosos e com brilho radiante.">
+                        <div class="relative">
+                           <img src="files/Magic_Cream.png" alt="Magic Cream" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Magic Cream</h3>
+                            <button class="btn btn-product add-to-cart-btn mb-3">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span>Adicionar</span>
+                            </button>
+                            <button class="view-details-btn">Ver detalhes</button>
+                        </div>
+                    </div>
+                    <!-- Produto 7 (Escondido) -->
+                    <!-- <div class="card-product group fade-in hidden-product hidden" data-name="Protetor Térmico" data-description="Proteção essencial contra o calor do secador e da chapinha. Forma uma película protetora que previne o ressecamento e as pontas duplas.">
+                        <div class="relative">
+                           <img src="https://placehold.co/400x400/a0aec0/ffffff?text=Produto+7" alt="Protetor Térmico" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Protetor Térmico</h3>
+                            <button class="btn btn-product add-to-cart-btn mb-3">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span>Adicionar</span>
+                            </button>
+                            <button class="view-details-btn">Ver detalhes</button>
+                        </div>
+                    </div> -->
+                    <!-- Produto 8 (Escondido) -->
+                    <!-- <div class="card-product group fade-in hidden-product hidden" data-name="Shampoo Matizador" data-description="Neutraliza tons amarelados indesejados em cabelos loiros, descoloridos ou grisalhos, revelando um tom platinado perfeito e luminoso.">
+                        <div class="relative">
+                           <img src="https://placehold.co/400x400/a0aec0/ffffff?text=Produto+8" alt="Shampoo Matizador" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Shampoo Matizador</h3>
+                            <button class="btn btn-product add-to-cart-btn mb-3">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span>Adicionar</span>
+                            </button>
+                            <button class="view-details-btn">Ver detalhes</button>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="text-center mt-12">
+                    <button id="toggle-products-btn" class="btn btn-secondary">Ver mais</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Produtos Parceiros -->
+        <section id="produtos-parceiros" class="bg-section py-16 lg:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in">
+                    <h2 class="section-title">Produtos Parceiros</h2>
+                    <p class="section-subtitle mt-2">Conheça os produtos incríveis da nossa marca parceira KRS23.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Produto Parceiro 1 -->
+                    <div class="card-product group fade-in" data-name="Shampoo Revitalizante KRS23" data-description="Fórmula exclusiva que limpa suavemente enquanto revitaliza o couro cabeludo, promovendo fios mais fortes e saudáveis. Enriquecido com extratos naturais.">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x400/16a34a/ffffff?text=KRS23" alt="Shampoo Revitalizante KRS23" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Shampoo Revitalizante</h3>
+                            <button class="btn btn-product add-to-cart-btn mb-3">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span>Adicionar</span>
+                            </button>
+                            <button class="view-details-btn">Ver detalhes</button>
+                        </div>
+                    </div>
+                    <!-- Produto Parceiro 2 -->
+                    <div class="card-product group fade-in" data-name="Máscara Nutritiva KRS23" data-description="Hidratação profunda para cabelos ressecados e sem vida. A Máscara Nutritiva KRS23 devolve a maciez, o brilho e a maleabilidade dos fios em poucos minutos.">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x400/16a34a/ffffff?text=KRS23" alt="Máscara Nutritiva KRS23" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Máscara Nutritiva</h3>
+                            <button class="btn btn-product add-to-cart-btn mb-3">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span>Adicionar</span>
+                            </button>
+                            <button class="view-details-btn">Ver detalhes</button>
+                        </div>
+                    </div>
+                    <!-- Produto Parceiro 3 -->
+                    <div class="card-product group fade-in" data-name="Leave-in Defrizante KRS23" data-description="Proteção térmica e ação anti-frizz em um só produto. Facilita a escovação e protege os cabelos do calor, deixando-os alinhados e sem frizz por mais tempo.">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x400/16a34a/ffffff?text=KRS23" alt="Leave-in Defrizante KRS23" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Leave-in Defrizante</h3>
+                            <button class="btn btn-product add-to-cart-btn mb-3">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span>Adicionar</span>
+                            </button>
+                            <button class="view-details-btn">Ver detalhes</button>
+                        </div>
+                    </div>
+                    <!-- Produto Parceiro 4 -->
+                    <div class="card-product group fade-in" data-name="Sérum Reparador KRS23" data-description="Repara pontas duplas e controla o frizz com toque seco. O Sérum Reparador KRS23 proporciona brilho instantâneo sem pesar os fios.">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x400/16a34a/ffffff?text=KRS23" alt="Sérum Reparador KRS23" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Sérum Reparador</h3>
+                            <button class="btn btn-product add-to-cart-btn mb-3">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span>Adicionar</span>
+                            </button>
+                            <button class="view-details-btn">Ver detalhes</button>
+                        </div>
+                    </div>
+                     <!-- Hidden Partner Products -->
+                    <div class="card-product group fade-in hidden-partner-product hidden" data-name="Pó Descolorante KRS23" data-description="Abre até 9 tons com segurança e eficácia. Fórmula dust-free que não levanta pó, ideal para todas as técnicas de descoloração.">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x400/16a34a/ffffff?text=KRS23" alt="Pó Descolorante KRS23" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Pó Descolorante</h3>
+                            <button class="btn btn-product add-to-cart-btn mb-3">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span>Adicionar</span>
+                            </button>
+                            <button class="view-details-btn">Ver detalhes</button>
+                        </div>
+                    </div>
+                    <div class="card-product group fade-in hidden-partner-product hidden" data-name="Oxidante Cremoso KRS23" data-description="Água oxigenada estabilizada e cremosa, perfeita para processos de coloração e descoloração, garantindo resultados uniformes e seguros. Disponível em várias volumagens.">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x400/16a34a/ffffff?text=KRS23" alt="Oxidante Cremoso KRS23" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Oxidante Cremoso</h3>
+                            <button class="btn btn-product add-to-cart-btn mb-3">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span>Adicionar</span>
+                            </button>
+                            <button class="view-details-btn">Ver detalhes</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <button id="toggle-partner-products-btn" class="btn btn-secondary">Ver mais</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção de Pedidos WhatsApp -->
+        <section id="whatsapp-order" class="py-16 lg:py-24">
+            <div class="container mx-auto px-6 text-center fade-in">
+                <h2 class="section-title">Fale Conosco</h2>
+                <p class="section-subtitle mt-4 max-w-2xl mx-auto">Quer um atendimento rápido e personalizado? Clique no botão abaixo para falar diretamente com um de nossos especialistas pelo WhatsApp e tirar suas dúvidas ou solicitar um orçamento.</p>
+                <a href="#" id="direct-whatsapp-link" class="btn btn-hero mt-8 inline-block">
+                    <i data-lucide="message-circle" class="inline-block mr-2"></i>
+                    Falar no WhatsApp
+                </a>
+            </div>
+        </section>
+        
+        <!-- Seção de Produto em Destaque -->
+        <section id="product-feature" class="bg-section py-16 lg:py-24">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12 fade-in">
+                    <div class="md:w-1/2">
+                        <img src="files/Blind_Premium.png" alt="Produto em Destaque: Blind Premium" class="rounded-lg shadow-2xl w-full">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h2 class="section-title">Produto do Mês</h2>
+                        <h3 class="text-3xl font-bold mt-2">Blind Premium</h3>
+                        <p class="section-subtitle mt-4">Nossa blindagem capilar oferece proteção máxima contra danos externos e um brilho espelhado incomparável. Com uma fórmula inovadora, o Blind Premium cria uma barreira protetora nos fios, sela as cutículas e prolonga o efeito liso.</p>
+                        <p class="section-subtitle mt-4">Ideal para todos os tipos de cabelo, é o segredo para um acabamento profissional duradouro.</p>
+                        <a href="#produtos" class="btn btn-hero mt-8 inline-block">Ver nos Produtos</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Inspiração / Modelo -->
+        <section id="inspiration" class="relative bg-gray-800 py-20 lg:py-32 text-white text-center">
+            <div class="absolute inset-0">
+                <img src="files/modelo_foto.png" alt="Modelo com cabelo bonito" class="w-full h-full object-cover opacity-30">
+            </div>
+            <div class="relative container mx-auto px-6 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold" style="font-family: 'Playfair Display', serif;">Produtos que Encantam</h2>
+                <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-gray-200">Veja o poder dos nossos produtos em ação e inspire-se com transformações reais.</p>
+                <a href="#produtos" class="btn btn-hero mt-8 inline-block">Conhecer Produtos</a>
+            </div>
+        </section>
+
+        <!-- Seção de Vídeo -->
+        <section id="video-tutorial" class="py-16 lg:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in">
+                    <h2 class="section-title">Visita a empresa (fábrica)</h2>
+                    <p class="section-subtitle mt-2">Veja como a nossa empresa trabalha na prática.</p>
+                </div>
+                <div class="relative aspect-video max-w-4xl mx-auto rounded-lg shadow-2xl overflow-hidden fade-in">
+                    <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/ZLsy-U8XlB0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Celebridade -->
+        <section id="celebrity-endorsement" class="py-16 lg:py-24">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12 fade-in">
+                    <!-- Imagem da Celebridade -->
+                    <div class="md:w-1/3">
+                        <img src="files/maramaravilhha.png" alt="Foto em retrato de uma celebridade" class="rounded-lg shadow-2xl w-full">
+                    </div>
+                    <!-- Texto -->
+                    <div class="md:w-2/3 text-center md:text-left">
+                        <h2 class="section-title">A Escolha das Estrelas</h2>
+                        <p class="section-subtitle mt-4 text-lg italic">"Desde que comecei a usar os produtos da Jei Professional e KRS, meu cabelo nunca esteve tão saudável e brilhante. É o meu segredo para estar sempre pronta para os holofotes."</p>
+                        <p class="celebrity-name mt-4 font-bold text-xl">- Mara Maravilha</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Resultados Reais -->
+        <section id="client-results" class="bg-section py-16 lg:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in">
+                    <h2 class="section-title">Resultados Reais</h2>
+                    <p class="section-subtitle mt-2">Veja a transformação que nossos produtos proporcionam.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 fade-in">
+                    <div class="group relative overflow-hidden rounded-lg">
+                        <img src="files/antes1.jpg" alt="Cabelo loiro com resultado de produto" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                     <div class="group relative overflow-hidden rounded-lg">
+                        <img src="files/depois1.jpg" alt="Cabelo cacheado com resultado de produto" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                     <div class="group relative overflow-hidden rounded-lg">
+                        <img src="files/antes2.jpg" alt="Cabelo ruivo com resultado de produto" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                     <div class="group relative overflow-hidden rounded-lg">
+                        <img src="files/depois2.jpg" alt="Cabelo escuro com resultado de produto" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Sobre Nós -->
+        <section id="sobre" class="py-16 lg:py-24">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12 fade-in">
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=2070&auto-format&fit=crop" alt="Interior de um salão de beleza" class="rounded-lg shadow-2xl w-full">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h2 class="section-title">Nossa História</h2>
+                        <p class="section-subtitle mt-4">Fundada em 2024, a Jei Professional nasceu da paixão por cosméticos de alta performance. Nossa missão é fornecer aos profissionais da beleza e aos seus clientes produtos da mais alta qualidade, com resultados comprovados e inovação constante.</p>
+                        <p class="section-subtitle mt-4">Acreditamos no poder da beleza para elevar a autoestima e transformar vidas. Por isso, selecionamos cuidadosamente cada item do nosso catálogo, garantindo excelência e satisfação.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer id="contato" class="bg-footer text-footer">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <img src="logoicon.png" alt="logo-pg" style="width: 80px;">
+                    <p class="mt-2 text-footer-muted">Beleza que inspira, qualidade que transforma.</p>
+                </div>
+                 <div>
+                    <h4 class="text-lg font-semibold">Links Rápidos</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#produtos" class="footer-link">Produtos</a></li>
+                        <li><a href="#sobre" class="footer-link">Sobre Nós</a></li>
+                        <li><a href="#" class="footer-link">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold">Siga-nos</h4>
+                    <div class="mt-4 flex justify-center md:justify-start space-x-6">
+                        <a href="https://www.instagram.com/krs23.oficial/" aria-label="Instagram" class="footer-link"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                        <a href="https://www.facebook.com/KairosKRS23/" aria-label="Facebook" class="footer-link"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                        <a href="#" aria-label="WhatsApp" class="footer-link"><i data-lucide="message-circle" class="w-6 h-6"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-800 pt-6 text-center text-gray-500 text-sm">
+                <p>&copy; 2025 Jei Professional. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Detalhes do Produto -->
+    <div id="product-detail-modal" class="modal-overlay hidden">
+        <div class="modal-content max-w-3xl">
+            <div class="flex justify-end">
+                <button id="close-product-modal-btn" class="text-gray-500 hover:text-gray-800 -mt-2 -mr-2">
+                    <i data-lucide="x" class="w-8 h-8"></i>
+                </button>
+            </div>
+            <div id="product-modal-body" class="grid md:grid-cols-2 gap-8 items-start mt-4">
+                <div>
+                    <img id="product-modal-image" src="" alt="Imagem do Produto" class="w-full rounded-lg shadow-lg">
+                </div>
+                <div>
+                    <h3 id="product-modal-name" class="text-3xl font-bold mb-2" style="font-family: 'Playfair Display', serif;">Nome do Produto</h3>
+                    <p id="product-modal-description" class="section-subtitle mb-6">Descrição detalhada do produto aqui.</p>
+                    <button id="product-modal-add-btn" class="btn btn-product w-full">
+                         <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                        <span>Adicionar ao Carrinho</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal do Carrinho/WhatsApp -->
+    <div id="whatsapp-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold">Seu Pedido</h3>
+                <button id="close-modal-btn" class="text-gray-500 hover:text-gray-800">
+                     <i data-lucide="x" class="w-8 h-8"></i>
+                </button>
+            </div>
+            <div id="modal-body">
+                <div id="cart-items-list" class="space-y-4 mb-6">
+                    <!-- Itens do carrinho serão inseridos aqui -->
+                    <p class="text-gray-500">Seu carrinho está vazio.</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <button id="finalize-order-btn" class="btn btn-product w-full" disabled>
+                     <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    <span>Solicitar Orçamento no WhatsApp</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Swiper.js -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

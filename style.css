@@ -1,0 +1,360 @@
+/* Estilos personalizados e fontes */
+
+/* PALETA DE CORES CENTRALIZADA
+  Altere os valores aqui para mudar o tema do site inteiro.
+*/
+:root {
+  /* Cores Principais */
+  --color-primary: #2592eb; /* blue-600 */
+  --color-primary-hover: #1d84d8; /* blue-700 */
+  --color-secondary: #1b73e7; /* indigo-600 */
+  --color-secondary-hover: #4338ca; /* indigo-700 */
+  --color-accent: #1440b8; /* teal-500 */
+  --color-accent-hover: #0d3c94; /* teal-600 */
+
+  /* Cores de Fundo */
+  --color-bg-body: #f9fafb; /* gray-50 */
+  --color-bg-header: #ffffff; /* white */
+  --color-bg-section: #ffffff; /* white */
+  --color-bg-card: #ffffff; /* white */
+  --color-bg-footer: #111827; /* gray-900 */
+  --color-bg-mobile-hover: #eff6ff; /* blue-50 */
+  --color-modal-content: #ffffff;
+
+  /* Cores de Texto */
+  --color-text-base: #1f2937; /* gray-800 */
+  --color-text-muted: #6b7280; /* gray-500 */
+  --color-text-nav: #4b5563; /* gray-600 */
+  --color-text-light: #ffffff; /* white */
+  --color-text-footer: #d1d5db; /* gray-300 */
+  --color-text-footer-muted: #9ca3af; /* gray-400 */
+}
+
+/* TEMA ESCURO */
+body.dark-mode {
+    --color-primary: #38bdf8; /* sky-400 */
+    --color-primary-hover: #7dd3fc; /* sky-300 */
+    --color-secondary: #818cf8; /* indigo-400 */
+    --color-secondary-hover: #a5b4fc; /* indigo-300 */
+    --color-accent: #2dd4bf; /* teal-400 */
+    --color-accent-hover: #5eead4; /* teal-300 */
+    
+    --color-bg-body: #111827; /* gray-900 */
+    --color-bg-header: #1f2937; /* gray-800 */
+    --color-bg-section: #111827; /* gray-900 */
+    --color-bg-card: #1f2937; /* gray-800 */
+    --color-bg-footer: #030712; /* gray-950 */
+    --color-bg-mobile-hover: #374151; /* gray-700 */
+    --color-modal-content: #1f2937; /* gray-800 */
+
+    --color-text-base: #f9fafb; /* gray-50 */
+    --color-text-muted: #9ca3af; /* gray-400 */
+    --color-text-nav: #d1d5db; /* gray-300 */
+    --color-text-footer: #d1d5db; /* gray-300 */
+    --color-text-footer-muted: #6b7280; /* gray-500 */
+}
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--color-bg-body);
+    color: var(--color-text-base);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+h1, h2, h3, .logo {
+    font-family: 'Playfair Display', serif;
+}
+.hero-bg {
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Componentes Reutilizáveis */
+.btn {
+    font-weight: bold;
+    border-radius: 9999px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    transform: scale(1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: scale(1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-hero {
+    background-image: linear-gradient(to right, var(--color-accent), var(--color-primary));
+    color: var(--color-text-light);
+    padding: 0.75rem 2rem;
+}
+.btn-hero:hover {
+    background-image: linear-gradient(to right, var(--color-accent-hover), var(--color-primary-hover));
+}
+
+.btn-product {
+    width: 100%;
+    background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    color: var(--color-text-light);
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+}
+.btn-product:hover:not(:disabled) {
+    background-image: linear-gradient(to right, var(--color-primary-hover), var(--color-secondary-hover));
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 0.65rem 1.75rem;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+/* Novo botão de detalhes */
+.view-details-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+.view-details-btn:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.card-product {
+    background-color: var(--color-bg-card);
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+body.dark-mode .card-product {
+     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+/* Seções */
+.bg-header { background-color: var(--color-bg-header); transition: background-color 0.3s ease; }
+.bg-section { background-color: var(--color-bg-section); transition: background-color 0.3s ease; }
+.bg-footer { background-color: var(--color-bg-footer); transition: background-color 0.3s ease; }
+
+/* Textos */
+.text-hero { color: #1459c2; } /* Cor do slogan principal, fixa para ambos os temas */
+.text-hero-secondary { color: #3c73ca; } /* Cor do slogan secundário, fixa para ambos os temas */
+.section-title { font-size: 2.25rem; font-weight: bold; color: var(--color-text-base); }
+.section-subtitle { color: var(--color-text-muted); }
+.text-footer { color: var(--color-text-footer); }
+.text-footer-muted { color: var(--color-text-footer-muted); }
+
+/* Classe específica para o nome da celebridade para corrigir a cor no modo escuro */
+.celebrity-name {
+    color: var(--color-text-base);
+}
+
+/* Navegação */
+.nav-link {
+    color: var(--color-text-nav);
+    transition: color 0.2s ease-in-out;
+}
+.nav-link:hover {
+    color: var(--color-primary);
+}
+
+.mobile-nav-link {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: var(--color-text-nav);
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+.mobile-nav-link:hover {
+    background-color: var(--color-bg-mobile-hover);
+    color: var(--color-primary);
+}
+
+.footer-link {
+    color: var(--color-text-footer-muted);
+    transition: color 0.2s ease-in-out;
+}
+.footer-link:hover {
+    color: var(--color-text-light);
+}
+
+/* Animação de fade-in ao rolar */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilização do ícone do carrinho */
+.cart-icon-container {
+    position: relative;
+}
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: #ef4444; /* red-500 */
+    color: white;
+    border-radius: 50%;
+    padding: 0.1em 0.4em;
+    font-size: 0.7rem;
+    font-weight: bold;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+
+.cart-badge.active {
+    transform: scale(1);
+}
+
+
+/* Estilos do Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal-overlay:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--color-modal-content);
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: translateY(-20px) scale(0.95);
+    transition: transform 0.3s ease-out, background-color 0.3s ease;
+}
+
+.modal-overlay:not(.hidden) .modal-content {
+    transform: translateY(0) scale(1);
+}
+
+#close-modal-btn, #close-product-modal-btn, #close-search-btn {
+    font-size: 2rem;
+    line-height: 1;
+    font-weight: bold;
+}
+
+/* Estilo para item de resultado de pesquisa */
+.search-result-item:hover {
+    background-color: var(--color-bg-mobile-hover);
+}
+
+
+/* Swiper / Slideshow Styles */
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    /* background: #fff; */ /* CORRIGIDO: Removido para não sobrescrever a imagem de fundo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+}
+.swiper-slide .text-white h1, .swiper-slide .text-white p {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Imagens de fundo para os slides de exemplo */
+.hero-bg-2 {
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('files/SOS_Premium.png');
+}
+.hero-bg-3 {
+     background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('files/depois2.jpg');
+}
+
+/* Swiper Navigation Arrows */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--color-primary) !important; /* Cor das setas */
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    width: 44px !important;
+    height: 44px !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: background-color 0.2s ease;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 20px !important;
+    font-weight: bold;
+}
+
+body.dark-mode .swiper-button-next,
+body.dark-mode .swiper-button-prev {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+body.dark-mode .swiper-button-next:hover,
+body.dark-mode .swiper-button-prev:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Swiper Pagination Dots */
+.swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.8) !important;
+    opacity: 0.8 !important;
+    width: 10px !important;
+    height: 10px !important;
+    transition: background-color 0.2s ease;
+}
+.swiper-pagination-bullet-active {
+    background: var(--color-primary) !important;
+    opacity: 1 !important;
+}
+
+body.dark-mode .swiper-pagination-bullet {
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+body.dark-mode .swiper-pagination-bullet-active {
+    background: var(--color-primary) !important;
+}
+
