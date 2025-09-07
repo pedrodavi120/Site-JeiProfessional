@@ -4,7 +4,7 @@
 ### Prints da interface do site >>
 
 <p align="center">
-    <img src="./streamlit.jpg" width="2000px">
+    <img src="printsJei/print1JEI.jpg" width="2000px">
 </p>
 
 ### Print do programa identificando que É o número 5.
